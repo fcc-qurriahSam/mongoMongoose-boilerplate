@@ -1,7 +1,31 @@
 require("dotenv").config();
+//const { MongoClient } = require("mongodb");
 const mongoose = require("mongoose");
-const uri = process.env.MONGO_URI;
-mongoose.connect(`${uri}`, { useNewUrlParser: true, useUnifiedTopology: true });
+const url = process.env.MONGO_URI;
+
+// const client = new MongoClient(url);
+
+const run = async () => {
+  try {
+    await mongoose.connect(`${url}`, { useNewUrlParser: true, useUnifiedTopology: true });
+    console.log("connected 2 server");
+  } catch (err) {
+    console.log(err.stack);
+  }
+};
+run();
+
+/* async function run() {
+  try {
+    await client.connect();
+    console.log("Connected correctly to server");
+  } catch (err) {
+    console.log(err.stack);
+  } finally {
+    await client.close();
+  }
+}
+run().catch(console.dir); */
 
 let Person;
 
