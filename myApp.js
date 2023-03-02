@@ -1,33 +1,18 @@
 require("dotenv").config();
-// const { MongoClient } = require("mongodb");
+
 const mongoose = require("mongoose");
 const url = process.env.MONGO_URI;
-console.log(url);
-// const client = new MongoClient(url); */
 
-const run = async () => {
+(async () => {
   try {
     await mongoose.connect(`${url}`, { useNewUrlParser: true, useUnifiedTopology: true });
     console.log("connected 2 server");
   } catch (err) {
     console.log(err.stack);
   }
-};
-run();
+})();
 
-/* async function run() {
-  try {
-    await client.connect();
-    console.log("Connected correctly to server");
-  } catch (err) {
-    console.log(err.stack);
-  } finally {
-    await client.close();
-  }
-}
-run().catch(console.dir); */
-
-let Person;
+const Person = require("./models/person");
 
 const createAndSavePerson = (done) => {
   done(null /*, data*/);
