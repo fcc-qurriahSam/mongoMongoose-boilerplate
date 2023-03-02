@@ -15,7 +15,7 @@ const client = new MongoClient(url);
 };
 run(); */
 
-async function run() {
+/* async function run() {
   try {
     await client.connect();
     console.log("Connected correctly to server");
@@ -25,7 +25,7 @@ async function run() {
     await client.close();
   }
 }
-run().catch(console.dir);
+run().catch(console.dir); */
 
 let Person;
 
