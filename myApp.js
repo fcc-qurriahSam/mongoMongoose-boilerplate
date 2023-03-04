@@ -15,7 +15,18 @@ const url = process.env.MONGO_URI;
 const Person = require("./models/person");
 
 const createAndSavePerson = (done) => {
-  done(null /*, data*/);
+  const person = new Person({
+    name: "sam",
+    age: 35,
+    favouriteFoods: ["pork", "beef"],
+  });
+  person.save(function (err, data) {
+    if (err) {
+      done(err);
+    } else {
+      done(null, data);
+    }
+  });
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
