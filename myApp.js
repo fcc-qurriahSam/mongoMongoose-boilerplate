@@ -12,7 +12,7 @@ const url = process.env.MONGO_URI;
   }
 })();
 
-const Person = require("./models/person");
+const Person = require(`${__dirname}/models/person`);
 
 const createAndSavePerson = (done) => {
   const person = new Person({
