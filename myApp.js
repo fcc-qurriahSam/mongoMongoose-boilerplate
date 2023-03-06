@@ -12,7 +12,13 @@ const url = process.env.MONGO_URI;
   }
 })();
 
-const Person = require(`${__dirname}/models/person`);
+const personSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  age: Number,
+  favouriteFoods: [String],
+});
+
+const Person = mongoose.model("Person", personSchema);
 
 const createAndSavePerson = (done) => {
   const person = new Person({
