@@ -1,30 +1,32 @@
 require("dotenv").config();
-
 const mongoose = require("mongoose");
-const url = process.env.MONGO_URI;
+const Schema = mongoose.Schema;
 
-(async () => {
-  try {
-    await mongoose.connect(`${url}`, { useNewUrlParser: true, useUnifiedTopology: true });
-    console.log("connected 2 server");
-  } catch (err) {
-    console.log(err.stack);
-  }
-})();
+mongoose
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  })
+  .then(() => console.log("Database connected!"))
+  .catch((err) => console.log(err));
 
-const personSchema = new mongoose.Schema({
-  name: { type: String, required: true },
+const schema = new Schema({
+  name: {
+    type: String,
+    require: true,
+  },
   age: Number,
-  favouriteFoods: [String],
+  favoriteFoods: [String],
 });
 
-const Person = mongoose.model("Person", personSchema);
+let Person = mongoose.model("Person", schema);
 
-const createAndSavePerson = (done) => {
+var createAndSavePerson = function (done) {
   const person = new Person({
-    name: "sam",
-    age: 35,
-    favouriteFoods: ["pork", "beef"],
+    name: "Sam",
+    age: 52,
+    favoriteFoods: ["fast foods", "chinese"],
   });
   person.save(function (err, data) {
     if (err) {
