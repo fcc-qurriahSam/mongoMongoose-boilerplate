@@ -28,12 +28,9 @@ var createAndSavePerson = function (done) {
     age: 30,
     favoriteFoods: ["beef", "githeri"],
   });
-  person.save(function (err, data) {
-    if (err) {
-      done(err);
-    } else {
-      done(null, data);
-    }
+  person.save((err, data) => {
+    if (err) return done(err);
+    return done(null, data);
   });
 };
 
