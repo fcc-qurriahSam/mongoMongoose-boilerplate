@@ -24,9 +24,9 @@ let Person = mongoose.model("Person", schema);
 
 var createAndSavePerson = function (done) {
   const person = new Person({
-    name: "Saad",
+    name: "Sam",
     age: 30,
-    favoriteFoods: ["fast foods", "chinese"],
+    favoriteFoods: ["beef", "githeri"],
   });
   person.save(function (err, data) {
     if (err) {
