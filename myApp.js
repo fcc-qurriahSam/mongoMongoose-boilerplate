@@ -22,10 +22,10 @@ const schema = new Schema({
 
 let Person = mongoose.model("Person", schema);
 
-const createAndSavePerson = function (done) {
+var createAndSavePerson = function (done) {
   const person = new Person({
-    name: "Sam",
-    age: 52,
+    name: "Saad",
+    age: 30,
     favoriteFoods: ["fast foods", "chinese"],
   });
   person.save(function (err, data) {
@@ -56,23 +56,11 @@ const arrayOfPeople = [
 ];
 
 const createManyPeople = (arrayOfPeople, done) => {
-  Person.create(arrayOfPeople, (err, data) => {
-    if (err) {
-      done(err);
-    } else {
-      done(null, data);
-    }
-  });
+  done(null /*, data*/);
 };
 
 const findPeopleByName = (personName, done) => {
-  Person.find(personName, () => {
-    if (err) {
-      done(err);
-    } else {
-      done(null, data);
-    }
-  });
+  done(null /*, data*/);
 };
 
 const findOneByFood = (food, done) => {
