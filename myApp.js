@@ -10,7 +10,13 @@ mongoose
   .then(() => console.log("Database connected!"))
   .catch((err) => console.log(err));
 
-let Person = require("./models/person");
+const personSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  age: Number,
+  favouriteFoods: [String],
+});
+
+const Person = mongoose.model("Person", personSchema);
 
 var createAndSavePerson = function (done) {
   const person = new Person({
