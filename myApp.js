@@ -60,21 +60,21 @@ const createManyPeople = (arrayOfPeople, done) => {
 };
 
 const findPeopleByName = (personName, done) => {
-  Person.find(personName, (err, data) => {
+  Person.find({ name: personName }, (err, data) => {
     if (err) return done(err);
     return done(null, data);
   });
 };
 
 const findOneByFood = (food, done) => {
-  Person.findOne(food, (err, data) => {
+  Person.findOne({ favoriteFoods: food }, (err, data) => {
     if (err) return done(err);
     return done(null, data);
   });
 };
 
 const findPersonById = (personId, done) => {
-  Person.findById(personId, (err, data) => {
+  Person.findById({ _id: personId }, (err, data) => {
     if (err) return done(err);
     return done(null, data);
   });
